@@ -6,8 +6,12 @@ spring:
       database: admin
       username: root
       password: root
+
   kafka:
     producer:
       bootstrap-servers: 127.0.0.1:9092
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+server:
+  port: 8082
