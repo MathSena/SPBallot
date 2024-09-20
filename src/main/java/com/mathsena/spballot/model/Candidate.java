@@ -1,6 +1,5 @@
 package com.mathsena.spballot.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,14 +12,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @Document(collection = "candidates")
 public class Candidate {
-    @Id
-    private String id;
-    private String name;
-    private Integer age;
-    private String gender;
-    private String politicalPosition;
-    private String biography;
-    private String photoUrl;
-    @DBRef
-    private PoliticalParty party;
+  @Id private String id;
+  private String name;
+  private Integer age;
+  private String gender;
+  private String politicalPosition;
+  private String biography;
+  private String photoUrl;
+  @DBRef private PoliticalParty party;
 }

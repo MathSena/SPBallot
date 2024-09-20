@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
@@ -21,5 +22,12 @@ public class Election {
   private LocalDate startDate;
   private LocalDate endDate;
   private String description;
-  @DBRef private List<Candidate> candidates;
+
+  @DBRef(lazy = false)
+  private List<Candidate> candidatesIds;
+
+  @DBRef(lazy = false)
+  private List<Candidate> candidates;
+
+  private Map<String, Integer> voteCount;
 }

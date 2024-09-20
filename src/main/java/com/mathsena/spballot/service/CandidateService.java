@@ -22,7 +22,12 @@ public class CandidateService {
   private final ModelMapper modelMapper;
 
   public CandidateDTO createCandidate(CandidateDTO candidateDTO) {
-    // Buscar o partido pelo partyId
+
+    Optional<Candidate> existingCandidate = candidateRepository.findByName(candidateDTO.getName());
+    if (existingCandidate.isPresent()) {
+      throw new RuntimeException("Candidato com o nome " + candidateDTO.getName() + " já existe.");
+    }
+
     PoliticalParty party =
         politicalPartyRepository
             .findById(candidateDTO.getPartyId())
@@ -31,16 +36,12 @@ public class CandidateService {
                     new RuntimeException(
                         "Partido não encontrado para o ID: " + candidateDTO.getPartyId()));
 
-    // Mapear o DTO para entidade Candidate
     Candidate candidate = modelMapper.map(candidateDTO, Candidate.class);
 
-    // Associar o partido ao candidato
     candidate.setParty(party);
 
-    // Salvar o candidato
     Candidate savedCandidate = candidateRepository.save(candidate);
 
-    // Mapear o candidato salvo de volta para DTO
     return modelMapper.map(savedCandidate, CandidateDTO.class);
   }
 

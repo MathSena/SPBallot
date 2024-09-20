@@ -12,9 +12,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @Document(collection = "votes")
 public class Vote {
-    @Id
-    private String id;
-    private String voterId;
-    @DBRef
-    private Candidate candidate;
+  @Id private String id;
+  private String voterId;
+
+  @DBRef private Election election;
+
+  @DBRef private Candidate candidate;
 }

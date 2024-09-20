@@ -4,11 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Map;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class VoteDTO {
-  private String voterId;
+public class ElectionResultDTO {
   private String electionId;
-  private String candidateId;
+  private String electionName;
+  private Map<String, Integer> candidateVotes;
 }

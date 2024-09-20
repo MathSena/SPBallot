@@ -11,12 +11,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ElectionDTO {
-    private String id;
-    private String name;
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private String description;
-    private List<String> candidateIds;
+  private String id;
+  private String name;
+  private LocalDate startDate;
+  private LocalDate endDate;
+  private String description;
 
-
+  private List<String> candidateIds;
+  private List<String> candidateNames;
 }
